@@ -1,0 +1,93 @@
+<h4>Creacion<small> Encuentas </small></h4>
+<hr>
+<form autocomplete="off" (ngSubmit)="saveEncuesta()" [formGroup]="registerForm">
+    <div>
+        <div class="form-group row">
+            <label class="col-md-2">ID</label>
+            <div class="col-md-2">
+                <input class="form-control" placeholder="ID" type="text" name="id" disabled="disabled">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2">Codigo</label>
+            <div class="col-8">
+                <input class="form-control" type="text" name="code" placeholder="Codigo" formControlName="code">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2">Nombre Encuesta</label>
+            <div class="col-8">
+                <input class="form-control" type="text" name="observation" placeholder="Nombre encuesta" formControlName="observation">
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="form-group">
+        <button type="button" class="btn btn-primary btn-block" (click)="agregarQuestion()"> + Agregar</button>
+    </div>
+    <div formArrayName="questions" *ngFor="let question of questions.controls; let i = index">
+        <div [formGroupName]="i">
+            <div class="form-group row">
+                <label class="col-2 col-form-label" [attr.for]="'name' + i">Pregunta</label>
+                <div class="col-md-3">
+                    <input class="form-control col-4" type="text" placeholder="Pregunta" [attr.id]="'name' + i" formControlName="name">
+                </div>
+                <label class="col-2 col-form-label" [attr.for]="'reward' + i">Puntaje</label>
+                <div class="col-md-3">
+                    <input class="form-control col-4" type="text" placeholder="Puntaje" [attr.id]="'reward' + i" formControlName="reward">
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-danger" (click)="removerQuestion(i)">Eliminar Pregunta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col-md-8">
+            <button type="submit" class="btn btn-outline-primary btn-block">
+        Guardar
+      </button>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <h4>Listado Encuentas</h4>
+        <hr>
+        <div class="row">
+            <div class="col">
+
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col-2">ID</th>
+                    <th scope="col-4">Codigo</th>
+                    <th scope="col-8">Nombre Encuenta</th>
+                    <th scope="col-2">Borrar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let encuesta of encuestas">
+                    <th scope="col-2"> {{ encuesta.id }} </th>
+                    <th scope="col-4"> {{ encuesta.code }} </th>
+                    <th scope="col-8"> {{ encuesta.observation }} </th>
+                    <th scope="col-2"><button type="button" class="btn btn-danger" (click)="borrarPreguntas(encuesta.id)">Borrar</button></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</form>
+
+
+<hr>
+<pre>
+    Estado del formulario: {{registerForm.valid }}
+    <br>
+    Status: {{ registerForm.status}}
+</pre>
+<pre>
+    {{ registerForm.value | json }}
+</pre>

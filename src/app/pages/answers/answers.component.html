@@ -1,0 +1,35 @@
+<div>
+    <div *ngFor="let questions_answer of dataQuestions; let i = index">
+        <br>
+        <h4 class="">{{ questions_answer.observation }}</h4>
+        <!--<input class="form-control col-4" type="text" placeholder="prueba" formControlName="prueba">-->
+        <hr>
+        <div>
+            <div *ngFor="let question of questions_answer.questions; let y = index">
+                <div class="form-group row">
+                    <label class="col-8 col-form-label">{{ question['name'] }}</label>
+                    <br>
+                    <div class="col-8">
+                        <input class="form-control col-4" type="text" placeholder="Respuesta" [(ngModel)]="answer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group row ">
+    <label class="col-2 col-form-label ">&nbsp;</label>
+    <div class="input-group col-md-8 ">
+        <button (click)="saveAnswers()" class="btn btn-outline-primary btn-block ">
+        Guardar
+      </button>
+    </div>
+</div>
+
+
+
+
+<hr>
+<pre>
+    {{ dataQuestions | json }}
+</pre>
