@@ -16,13 +16,15 @@ import { environment } from 'src/environments/environment';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { AnswersComponent } from './pages/answers/answers.component';
+import { SurveyComponent } from './pages/survey/survey.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateComponent,
     ReactiveComponent,
-    AnswersComponent
+    AnswersComponent,
+    SurveyComponent
   ],
   imports: [
     BrowserModule,

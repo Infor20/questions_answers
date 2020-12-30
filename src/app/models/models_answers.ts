@@ -1,14 +1,24 @@
-export interface AnswersModel {
-    id: string;
-    questions: [];
-    answers: string;
-    answer: string;
-    questionId: string
-    reward: number;
-    totalerward: number;
-    observation: number;
-    prueba: string;
-    name: string;
-    question: string;
-    code: string;
+import { IAnswer,IQuestion } from '../interfaces/ianswers';
+
+export class SurveyAnswer implements IAnswer {
+    id: string = ''
+    questions: IQuestion[] = []
+    surveyId: string = ''
+    panelistId: string = ''
+
+    constructor(ianswers?: IAnswer){
+        Object.assign(this, ianswers)
+    }
+
+    public model(id?:string): IAnswer{
+        return {
+            id: this.id || id,
+            questions: this.questions,
+            surveyId: this.surveyId,
+            panelistId: this.panelistId
+        };
+    }
 }
+
+
+

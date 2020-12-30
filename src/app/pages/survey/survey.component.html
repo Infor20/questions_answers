@@ -1,0 +1,81 @@
+<h4>Creacion<small> Encuentas </small></h4>
+<hr>
+<div>
+    <div>
+        <label class="col-md-2">ID</label>
+        <div class="col-md-2">
+            <input class="form-control" placeholder="ID" type="text" name="id" [(ngModel)]='newSurvey.id' disabled="disabled">
+        </div>
+    </div>
+    <div>
+        <label class="col-md-2">Codigo</label>
+        <div class="col-8">
+            <input class="form-control" type="text" name="code" [(ngModel)]='newSurvey.code' placeholder="Codigo">
+        </div>
+    </div>
+    <div>
+        <label class="col-2">Nombre Encuesta</label>
+        <div class="col-8">
+            <input class="form-control" type="text" name="observation" [(ngModel)]='newSurvey.observation' placeholder="Nombre encuesta">
+        </div>
+    </div>
+</div>
+<hr>
+<div>
+    <button type="button" class="btn btn-primary btn-block" (click)="agregarQuestion()"> + Agregar</button>
+</div>
+<div *ngFor="let question of newSurvey.questions; let i = index">
+    <div>
+        <div>
+            <label class="col-2 col-form-label ">Pregunta</label>
+            <div class="col-md-3 ">
+                <input class="form-control col-4 " type="text " placeholder="Pregunta " [(ngModel)]='question.name'>
+            </div>
+            <label class="col-2 col-form-label ">Puntaje</label>
+            <div class="col-md-3 ">
+                <input class="form-control col-4 " type="text " placeholder="Puntaje " [(ngModel)]='question.reward'>
+            </div>
+            <div class="col-2 ">
+                <button type="button " class="btn btn-danger " (click)="removerQuestion(i) ">Eliminar Pregunta</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <label class="col-2 col-form-label ">&nbsp;</label>
+    <div class="input-group col-md-8 ">
+        <button type="button" (click)='saveEncuesta()' class="btn btn-outline-primary btn-block ">
+        Guardar
+      </button>
+    </div>
+</div>
+<hr>
+<div>
+    <h4>Listado Encuentas</h4>
+    <hr>
+    <div class="row ">
+        <div class="col ">
+
+        </div>
+    </div>
+    <table class="table ">
+        <thead>
+            <tr>
+                <th scope="col-2 ">ID</th>
+                <th scope="col-4 ">Codigo</th>
+                <th scope="col-8 ">Nombre Encuenta</th>
+                <th scope="col-2 ">Borrar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let survey of surveys ">
+                <th scope="col-2 "> {{ survey.id }} </th>
+                <th scope="col-4 "> {{ survey.code }} </th>
+                <th scope="col-8 "> {{ survey.observation }} </th>
+                <th scope="col-2 "><button type="button " class="btn btn-danger " (click)="deleteSurveys(survey.id) ">Borrar</button></th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- {{newSurvey | json }}-->
