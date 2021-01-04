@@ -1,10 +1,10 @@
 import { IAnswer,IQuestion } from '../interfaces/ianswers';
 
 export class SurveyAnswer implements IAnswer {
-    id: string = ''
+    id: string = null
     questions: IQuestion[] = []
-    surveyId: string = ''
-    panelistId: string = ''
+    surveyId: string = null
+    panelistId: string = null
 
     constructor(ianswers?: IAnswer){
         Object.assign(this, ianswers)

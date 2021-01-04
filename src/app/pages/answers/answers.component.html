@@ -1,16 +1,14 @@
 <div>
-    <div *ngFor="let questions_answer of dataSurvey; let i = index">
-        <br>
-        <h4 class="">{{ questions_answer.observation }}</h4>
-        <hr>
-        <div>
-            <div *ngFor="let question of questions_answer.questions; let y = index">
-                <div class="form-group row">
-                    <label class="col-8 col-form-label">{{ question['name'] }}</label>
-                    <br>
-                    <div class="col-8">
-                        <!--<input class="form-control col-4" type="text" placeholder="Respuesta" [(ngModel)]="question.answer">-->
-                    </div>
+    <br>
+    <h4 class="">{{ currentSurvey.observation }}</h4>
+    <hr>
+    <div>
+        <div *ngFor="let question of iSurveyAnswers; ; let y = index">
+            <div class="form-group row">
+                <label class="col-8 col-form-label">{{ y + 1 }} - {{ question.question }}</label>
+                <br>
+                <div class="col-8">
+                    <input class="form-control col-4" type="text" placeholder="Respuesta" [(ngModel)]="question.answer">
                 </div>
             </div>
         </div>
@@ -25,10 +23,7 @@
     </div>
 </div>
 
-
-
-
 <hr>
 <pre>
-    {{ dataSurvey | json }}
+    {{ iSurveyAnswers | json }}
 </pre>

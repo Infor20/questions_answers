@@ -3,18 +3,18 @@ export interface IAnswer {
     questions: IQuestion[];
     surveyId: string;
     panelistId: string;
-    surveyQuestions: ISurveyAnswer[];
 }
 
 export interface IQuestion {
     answer: string;
-    questionId: string;
+    questionIndex: number;
     reward: number;
     totalReward: number;
 }
 
 export interface ISurveyAnswer {
     question: string
-    questionId: number
+    questionIndex: number
     answer: string
+    reward: number
 }
